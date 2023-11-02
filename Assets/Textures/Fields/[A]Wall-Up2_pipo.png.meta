@@ -152,7 +152,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      '[A]Wall-Up2_pipo_0': -6734256650214395772
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

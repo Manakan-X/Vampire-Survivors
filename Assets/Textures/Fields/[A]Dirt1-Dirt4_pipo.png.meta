@@ -152,7 +152,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      '[A]Dirt1-Dirt4_pipo_0': 1542885767909396537
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
