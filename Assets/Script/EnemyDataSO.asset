@@ -12,4 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1f27aba8b3804442b49924cc2dc9133, type: 3}
   m_Name: EnemyDataSO
   m_EditorClassIdentifier: 
-  EnemyList: []
+  EnemyList:
+  - ID: 0
+    Name: "\u30B9\u30E9\u30A4\u30E0"
+    Hp: 10
+    AtacckPower: 0
+    MoveSpeed: 0
+    Exp: 3
+  - ID: 1
+    Name: "\u30B9\u30B1\u30EB\u30C8\u30F3"
+    Hp: 20
+    AtacckPower: 0
+    MoveSpeed: 0
+    Exp: 7
