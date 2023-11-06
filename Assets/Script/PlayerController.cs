@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerController : MonoBehaviour
 {
@@ -40,7 +41,16 @@ public class PlayerController : MonoBehaviour
     {
         // 斜めの移動距離を正規化処理を行い均一化する
         Vector3 dir = new Vector3(horizontal, vertical, 0).normalized;
-        // velocity(速度)に新しい値を代入して、ゲームオブジェクトを移動させる
-        rb.velocity = dir * moveSpeed;
+
+        if (dir != Vector3.zero)
+        {
+            // velocity(速度)に新しい値を代入して、ゲームオブジェクトを移動させる
+            rb.velocity = dir * moveSpeed;
+        }
+        else
+        {
+            // 入力がない場合、速度をゼロに設定して停止
+            rb.velocity = Vector3.zero;
+        }
     }
 }
