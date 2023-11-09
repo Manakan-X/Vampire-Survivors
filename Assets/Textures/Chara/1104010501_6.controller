@@ -29,7 +29,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Player_light
+  m_Name: player_right
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []

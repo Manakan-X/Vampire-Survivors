@@ -13,11 +13,16 @@ public class PlayerController : MonoBehaviour
     private float horizontal;   // x軸(水平)方向の入力の値の代入用
     private float vertical;     // y軸(垂直)方向の入力の値の代入用
 
+    private Animator anim;
+    private Vector2 lookDirection = new Vector2(0, -1.0f);      // キャラの向きの情報の設定用
+
     private void Start()
     {
         // このスクリプトがアタッチされているゲームオブジェクト、にアタッチされているコンポーネントの中から
         // <指定>したコンポーネントの情報を取得して、左辺に用意した変数に代入
         rb = GetComponent<Rigidbody2D>();
+
+        TryGeyComponent(out anim);
     }
 
     private void Update()
@@ -26,6 +31,12 @@ public class PlayerController : MonoBehaviour
         horizontal = Input.GetAxis("Horizontal");
         // InputManagerのVerticalに登録してあるキーが入力されたら、垂直方向の入力値として代入
         vertical = Input.GetAxis("Vertical");
+
+        if (anim)
+        {
+            // キャラの向いている方向と移動アニメの同期
+            SyncMoveAnimation();
+        }
     }
 
     private void FixedUpdate()
@@ -51,6 +62,20 @@ public class PlayerController : MonoBehaviour
         {
             // 入力がない場合、速度をゼロに設定して停止
             rb.velocity = Vector3.zero;
+        }
+    }
+
+    /// <summary>
+    /// キャラの向いている方向と移動アニメの同期
+    /// </summary>
+     
+    private void SyncMoveAnimation()
+    {
+        // いずれかのキー入力があるか確認
+        if (!Mathf.Approximately(horizontal, 0.0f) || !Mathf.Approximately(vertical, 0.0f))
+        {
+            // 向いている方向を更新
+            lookDirection.Set(horizontal, vertical);
         }
     }
 }
