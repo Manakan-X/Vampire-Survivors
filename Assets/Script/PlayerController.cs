@@ -13,16 +13,16 @@ public class PlayerController : MonoBehaviour
     private float horizontal;   // x軸(水平)方向の入力の値の代入用
     private float vertical;     // y軸(垂直)方向の入力の値の代入用
 
-    private Animator anim;
+    private Animator anim;      // コンポーネントの取得用
     private Vector2 lookDirection = new Vector2(0, -1.0f);      // キャラの向きの情報の設定用
 
     private void Start()
     {
         // このスクリプトがアタッチされているゲームオブジェクト、にアタッチされているコンポーネントの中から
         // <指定>したコンポーネントの情報を取得して、左辺に用意した変数に代入
-        rb = GetComponent<Rigidbody2D>();
+        TryGetComponent(out rb);
 
-        TryGeyComponent(out anim);
+        TryGetComponent(out anim);
     }
 
     private void Update()
@@ -76,6 +76,17 @@ public class PlayerController : MonoBehaviour
         {
             // 向いている方向を更新
             lookDirection.Set(horizontal, vertical);
+
+            // 正規化
+            lookDirection.Normalize();
+
+            // キー入力の値とBlendTreeで設定した移動アニメ用の値を確認し、移動アニメを再生
+            anim.SetFloat("Speed", lookDirection.sqrMagnitude);
+        }
+        else
+        {
+            // 停止アニメーション
+            anim.SetFloat("Speed", 0);
         }
     }
 }
