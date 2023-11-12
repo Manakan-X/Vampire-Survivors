@@ -93,4 +93,9 @@ public class PlayerController : MonoBehaviour
             anim.SetFloat("Speed", 0);
         }
     }
+
+    public Vector2 GetLookDirection()
+    {
+        return lookDirection;
+    }
 }
