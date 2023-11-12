@@ -80,6 +80,10 @@ public class PlayerController : MonoBehaviour
             // 正規化
             lookDirection.Normalize();
 
+            // キー入力の値とBlendTreeでせっていした移動アニメ用の値を確認し、移動アニメを再生
+            anim.SetFloat("Look X", lookDirection.x);
+            anim.SetFloat("Look Y", lookDirection.y);
+
             // キー入力の値とBlendTreeで設定した移動アニメ用の値を確認し、移動アニメを再生
             anim.SetFloat("Speed", lookDirection.sqrMagnitude);
         }
