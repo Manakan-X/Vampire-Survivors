@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class BulletGenerator : MonoBehaviour
 {
-    public GameObject bulletPrefab; // 弾のプレファブ
-    public Transform firePoint; // 発射ポイント
-    public float fireRate = 2f; // 発射間隔(秒)
+    public GameObject bulletPrefab;     // 弾のプレファブ
+    public Transform firePoint;     // 発射ポイント
+    public float fireRate = 2f;     // 発射間隔(秒)
 
-    private float timer = 0f; // タイマー
-    private PlayerController playerController; // PlayerControllerへの参照
+    private float timer = 0f;   // タイマー
+    private PlayerController playerController;      // PlayerControllerへの参照
 
     private void Start()
     {
-        // PlayerControllerコンポーネントの情報をplayerController変数にキャッシュする
+        // BulletGeneratorがアタッチされたオブジェクトからPlayerControllerを取得
         TryGetComponent(out playerController);
     }
 
@@ -33,16 +33,15 @@ public class BulletGenerator : MonoBehaviour
     void FireBullet()
     {
         // 弾の生成
-        GameObject bulletObject = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        Bullet bullet = bulletObject.GetComponent<Bullet>();
+        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
 
         if (playerController != null )
         {
             // PlayerControllerから向いている方向を取得
-            Vector2 playerLookDirection = playerController.GetLookDirection();
+            Vector2 direction = playerController.GetLookDirection();
 
             // BulletのShootメソッドを呼び出して弾を発射
-            bullet.Shoot(playerLookDirection);
+            bullet.GetComponent<Bullet>().Shoot(direction);
         }
     }
 }
