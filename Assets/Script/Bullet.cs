@@ -25,6 +25,9 @@ public class Bullet : MonoBehaviour
 
         // 一定時間経過後、弾を消滅させる
         Destroy(gameObject, destroyTime);
+
+        //弾の向きを設定
+        SetBulletDirection(direction);
     }
 
     /// <summary>
@@ -38,6 +41,19 @@ public class Bullet : MonoBehaviour
         {
             // このゲームオブジェクトを破壊
             Destroy(gameObject);
+        }
+    }
+
+    /// <summary>
+    /// 弾の向きを設定
+    /// </summary>
+    private void SetBulletDirection(Vector2 direction)
+    {
+        // 弾のSpriteRendererコンポーネントを取得
+        if (TryGetComponent(out SpriteRenderer spriteRenderer))
+        {
+            // direction.x が正ならば右向き、負ならば左向き
+            spriteRenderer.flipX = direction.x < 0f;
         }
     }
 }
