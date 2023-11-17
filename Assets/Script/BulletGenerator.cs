@@ -13,19 +13,35 @@ public class BulletGenerator : MonoBehaviour
 
     private void Start()
     {
-        // BulletGeneratorがアタッチされたオブジェクトからPlayerControllerを取得
-        TryGetComponent(out playerController);
+        // プレイヤーオブジェクトからPlayerControllerコンポーネントを取得
+        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+        if (playerObject != null)       // playerObjectがnullじゃなければ
+        {
+            // playerObjectにアタッチされているPlayerControllerを取得して、変数playerControllerに代入する
+            playerController = playerObject.GetComponent<PlayerController>();
+
+            // playerControllerがnullだった場合
+            if (playerController == null)
+            {
+                Debug.LogError("PlayerControllerコンポーネントが見つかりませんでした。");
+            }
+        }
+        else
+        {
+            Debug.LogError("プレイヤーオブジェクトが見つかりませんでした。");
+        }
     }
 
     private void Update()
     {
         // タイマーを更新
         timer += Time.deltaTime;
-
+        
         // 指定の間隔で弾を生成して発射
         if (timer >= fireRate)
         {
             FireBullet();
+            
             timer = 0f; // タイマーをリセット
         }
     }
@@ -33,13 +49,13 @@ public class BulletGenerator : MonoBehaviour
     void FireBullet()
     {
         // 弾の生成
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
 
-        if (playerController != null )
+        if (playerController != null)
         {
             // PlayerControllerから向いている方向を取得
             Vector2 direction = playerController.GetLookDirection();
-
+            
             // BulletのShootメソッドを呼び出して弾を発射
             bullet.GetComponent<Bullet>().Shoot(direction);
         }

@@ -7,9 +7,9 @@ using UnityEngine;
 /// </summary>
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] private float bulletSpeed;     
+    [SerializeField] private float bulletSpeed;     // ’e‘¬
 
-    [SerializeField] private float destroyTime;
+    [SerializeField] private float destroyTime;     // Á–Å‚Ü‚Å‚ÌŠÔ
 
     /// <summary>
     /// ƒoƒŒƒbƒg”­Ë
