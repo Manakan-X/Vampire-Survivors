@@ -101,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpeed: 300
   destroyTime: 5
-  atackPower: 2
+  atackPower: 3
 --- !u!50 &-5545352446195402771
 Rigidbody2D:
   serializedVersion: 4

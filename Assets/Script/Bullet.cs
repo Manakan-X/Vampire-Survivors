@@ -21,6 +21,10 @@ public class Bullet : MonoBehaviour
         // このゲームオブジェクトにRigidbody2Dがアタッチされていれば、変数rbにRigidbody2Dを代入する
         if (TryGetComponent(out Rigidbody2D rb))
         {
+            // 弾の向きを調整(弾先がプレイヤーの進行方向を向くように)
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+
             // direction(方向)とbulletSpeed(弾速)に基づいて、力を加えて発射する
             rb.AddForce(direction * bulletSpeed);
         }
@@ -29,7 +33,7 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject, destroyTime);
 
         //弾の向きを設定
-        SetBulletDirection(direction);
+        // SetBulletDirection(direction);
     }
 
     /// <summary>
