@@ -11,6 +11,8 @@ public class Bullet : MonoBehaviour
 
     [SerializeField] private float destroyTime;     // Á–Å‚Ü‚Å‚ÌŠÔ
 
+    public int atackPower;      // ’e‚ÌUŒ‚—Í
+
     /// <summary>
     /// ƒoƒŒƒbƒg”­Ë
     /// </summary>
