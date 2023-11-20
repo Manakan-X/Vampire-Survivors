@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     [Header("移動速度")]
     public float moveSpeed;
+    public int hp;
 
     private Rigidbody2D rb;       // コンポーネントの取得用
 
@@ -97,5 +98,21 @@ public class PlayerController : MonoBehaviour
     public Vector2 GetLookDirection()
     {
         return lookDirection;
+    }
+
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        // 敵とぶつかったら
+        if (col.gameObject.TryGetComponent(out EnemyController enemyController))       
+        {
+            // hpを減らす
+            hp--;
+
+            // hpが0になったら"Game Over"をログに表示させる
+            if (hp <= 0)
+            {
+                Debug.Log("Game Over");
+            }
+        }
     }
 }

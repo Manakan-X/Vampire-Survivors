@@ -37,20 +37,6 @@ public class Bullet : MonoBehaviour
     }
 
     /// <summary>
-    /// 弾が当たった敵を破壊
-    /// </summary>
-    /// <param name="col">衝突した相手のCollider2D</param>
-    private void OnTriggerEnter2D(Collider2D col)
-    {
-        // 衝突相手のタグが"Enemy"だったら
-        if (col.CompareTag("Enemy"))
-        {
-            // このゲームオブジェクトを破壊
-            Destroy(gameObject);
-        }
-    }
-
-    /// <summary>
     /// 弾の向きを設定
     /// </summary>
     private void SetBulletDirection(Vector2 direction)
