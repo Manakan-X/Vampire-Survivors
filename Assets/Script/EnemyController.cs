@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     [SerializeField] int hp;
+    public int exp;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
