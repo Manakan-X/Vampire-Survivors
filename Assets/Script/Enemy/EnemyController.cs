@@ -5,8 +5,15 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     [SerializeField] int hp;
-    public int exp;
-  
+    [SerializeField] PlayerStatus playerStatus;
+
+    public int enemyExp;
+
+    private void Start()
+    {
+        playerStatus = GetComponent<PlayerStatus>();
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.TryGetComponent(out Bullet bullet))
@@ -19,6 +26,8 @@ public class EnemyController : MonoBehaviour
             {
                 // hp‚ª0ˆÈ‰º‚¾‚Á‚½‚ç“G‚ğ”j‰ó‚·‚é
                 Destroy(gameObject);
+                // PlayerStatus‚Ìexp•Ï”‚ÉenemyExp‚ğ‰ÁZ
+                playerStatus.exp += enemyExp;
             }
             Destroy(bullet.gameObject);
         }

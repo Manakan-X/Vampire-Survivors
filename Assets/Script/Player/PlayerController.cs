@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour
     [Header("移動速度")]
     public float moveSpeed;
     public int hp;
-    public int expGage;         // EXPを取得したら増える
 
     private Rigidbody2D rb;       // コンポーネントの取得用
     private Bullet bullet;      // クラス取得用
@@ -115,13 +114,5 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("Game Over");
             }
         }
-    }
-
-    public void ExpGet()
-    {
-        // プレイヤーの攻撃で敵を倒したら
-        
-
-        // 敵のexpをプレイヤーのexpGageに加算する
     }
 }

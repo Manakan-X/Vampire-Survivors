@@ -7,6 +7,7 @@ public class PlayerStatus : MonoBehaviour
     public int lv;       // レベル
     public int exp;        // 経験値
     public int lvUpExp;        // 必要経験値
+
     void Update()
     {
         // 経験値が必要経験値を上回ったら
