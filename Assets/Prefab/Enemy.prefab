@@ -100,7 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 3
-  exp: 5
+  playerStatus: {fileID: 0}
+  enemyExp: 5
 --- !u!58 &7740357297356558978
 CircleCollider2D:
   m_ObjectHideFlags: 0

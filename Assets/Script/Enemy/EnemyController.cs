@@ -11,7 +11,7 @@ public class EnemyController : MonoBehaviour
 
     private void Start()
     {
-        playerStatus = GetComponent<PlayerStatus>();
+        playerStatus = GameObject.Find("Player").GetComponent<PlayerStatus>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
