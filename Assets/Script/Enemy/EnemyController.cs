@@ -8,6 +8,8 @@ public class EnemyController : MonoBehaviour
     [SerializeField] PlayerStatus playerStatus;
 
     public int enemyExp;
+    public float moneyDropProbability = 0.1f;       // 10％の確率でお金をドロップ
+    public GameObject moneyPrefab;      // お金のプレファブ
 
     private void Start()
     {
@@ -26,10 +28,22 @@ public class EnemyController : MonoBehaviour
             {
                 // hpが0以下だったら敵を破壊する
                 Destroy(gameObject);
+
                 // PlayerStatusのexp変数にenemyExpを加算
                 playerStatus.exp += enemyExp;
+
+                // 敵が破壊されたら一定の確率でお金をドロップする
+                if (Random.value < moneyDropProbability)
+                {
+                    DropMoney();
+                }
             }
             Destroy(bullet.gameObject);
         }
+    }
+
+    void DropMoney()
+    {
+        Instantiate(moneyPrefab, transform.position, Quaternion.identity);
     }
 }
